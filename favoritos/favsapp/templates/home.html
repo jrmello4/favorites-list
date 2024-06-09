@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+    <div class="container mt-4">
+    <!-- Introdução -->
+    <div class="jumbotron">
+        <h1 class="display-4">Bem-vindo ao Nosso Site!</h1>
+        <p class="lead">Explore uma vasta coleção de recursos categorizados especialmente para você.</p>
+        <hr class="my-4">
+        <p>Acesse diversas categorias de conteúdo, de educacional a entretenimento, tudo em um só lugar.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'categorias_view' %}" role="button">Explorar Categorias</a>
+    </div>
+    
+    <!-- Destaques de Categorias -->
+    <div class="row">
+        <h2 class="mb-3">Categorias em Destaque</h2>
+        {% for categoria in categorias_destaque %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ categoria.photo.url }}" class="card-img-top" alt="{{ categoria.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ categoria.name }}</h5>
+                    <p class="card-text">Descubra mais sobre {{ categoria.name }} e explore conteúdos relevantes.</p>
+                    <a href="{% url 'categoriaDetail' categoria.id %}" class="btn btn-outline-primary">Saiba Mais</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

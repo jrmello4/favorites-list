@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        {% for categoria in object_list %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ categoria.photo.url  }}" class="img-fluid rounded-start" alt="{{ categoria.name }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ categoria.name }}</h5>
+                            <a href="{% url 'categoriaDetail' categoria.id %}" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
